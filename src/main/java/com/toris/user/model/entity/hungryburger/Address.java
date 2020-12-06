@@ -1,15 +1,29 @@
 package com.toris.user.model.entity.hungryburger;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import com.toris.user.model.entity.BaseEntity;
+import lombok.NoArgsConstructor;
 
-@Embeddable
-public class Address {
-    @Column(name = "city")
-    private String city;
-    @Column(name = "street")
-    private String street;
-    @Column(name = "zip_code")
+import javax.persistence.*;
+
+@Entity
+@Table(name = "address")
+@NoArgsConstructor
+public class Address extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "address_id")
+    private Long id;
+
+    @Column(nullable = false, name = "address_usage")
+    private AddressUsage addressUsage;
+
+    private String name;
     private String zipCode;
+    private String address;
+    private String addressDetail;
+    private String phoneNumber;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

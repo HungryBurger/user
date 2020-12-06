@@ -2,38 +2,40 @@ package com.toris.user.model.entity.hungryburger;
 
 import com.toris.user.model.entity.BaseEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Data
 @Entity
+@NoArgsConstructor
+@Table(name = "user")
 public class User extends BaseEntity {
-    @Column(nullable = false)
-    private Long mbr_seq;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String password;
-    private String passwordDtm;
-    @Column(nullable = false)
-    private String joinDtm;
-    private String nickname;
+
+    @Column(nullable = false, name = "user_id")
+    private String user_id;
+
     @Column(nullable = false)
     private String name;
-    @Embedded
-    private Address address;
-    @Column(nullable = false)
-    private String profilePicture;
-    @Column(nullable = false)
+
+    private String mobile;
+    private String password;
     private String email;
-    private String emailChangeDtm;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+    @Column(name="password_change_at")
+    private String passwordChangeAt;
 
-    @Embedded
-    private OrderBase orderbase;
+    @Column(name="join_at")
+    private String joinAt;
+
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private Set<com.toris.user.model.entity.hungryburger.Address> addresses = new LinkedHashSet<>();
+
+
 
 }
