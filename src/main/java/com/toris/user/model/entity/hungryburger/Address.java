@@ -18,6 +18,7 @@ public class Address extends BaseEntity {
     private AddressUsage addressUsage;
 
     private String name;
+
     @Column(name="zip_code")
     private String zipCode;
     private String address;
