@@ -27,6 +27,7 @@ public class User extends BaseEntity {
     private String password;
     private String email;
 
+
     @Column(name="password_change_at")
     private String passwordChangeAt;
 

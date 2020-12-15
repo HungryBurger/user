@@ -2,7 +2,6 @@
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-
 spring:
   application:
     name: user
@@ -26,7 +25,8 @@ spring:
         format_sql: false
     generate-ddl: true
     show-sql: true
-
+  logging:
+    config: classpath:log4j2.yml
 ---
 spring:
   config:
