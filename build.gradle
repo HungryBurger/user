@@ -30,7 +30,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
-    compile group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.0'
+    compile group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.1'
 
 }
 
